@@ -22,16 +22,22 @@ const displayCategory = (categories) => {
 }
 
 const displayNews = async (categoryId) => {
-    console.log(categoryId)
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
-    console.log(url)
     const res = await fetch(url);
     const data = await res.json();
-    console.log(data)
+    displayNewsDatails(data.data, categoryId)
 
 }
 
+const displayNewsDatails = async (newsId, categoryId) => {
+    console.log(newsId.length)
+    const totalNews = document.getElementById('total-news');
 
+    totalNews.innerHTML = `
+    <h5>${newsId.length ? newsId.length :
+            'No'} News Found</h5>
+    `;
+}
 
 
 loadCategory();
