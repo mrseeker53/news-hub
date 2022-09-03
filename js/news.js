@@ -52,7 +52,7 @@ const displayNewsDatails = async (newsId) => {
         newsDiv.classList.add('card');
         newsDiv.classList.add('p-3');
         newsDiv.innerHTML = `
-        <div class="row g-0">
+        <div class="container row g-0">
             <div class="col-md-4">
                 <img src="${news.thumbnail_url}" class="img-fluid rounded" alt="...">
             </div>
@@ -61,7 +61,7 @@ const displayNewsDatails = async (newsId) => {
                     <h5 class="card-title">${news.title}</h5>
                     <p class="card-text">${news.details.slice(0, 500)}...</p>
                 </div>
-                <div class="col-md-4 d-flex align-items-center px-3 pt-3">
+                <div class="col-4 d-flex align-items-center px-3 pt-3">
                     <img class="img-fluid rounded w-25 me-3" src="${news.author.img}"
                     <h5 class="pe-5 me-5">${news.author.name}</h5>
                     <span class="px-5 mx-5">${news.total_view}</span>
