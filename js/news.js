@@ -1,9 +1,15 @@
 // call api and return a promise for news category
 const loadCategory = async () => {
-    const url = 'https://openapi.programming-hero.com/api/news/categories'
-    const res = await fetch(url);
-    const data = await res.json();
-    displayCategory(data.data.news_category);
+    // error handler
+    try {
+        const url = 'https://openapi.programming-hero.com/api/news/categories'
+        const res = await fetch(url);
+        const data = await res.json();
+        displayCategory(data.data.news_category);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 // display categories
@@ -19,6 +25,7 @@ const displayCategory = (categories) => {
     })
 }
 
+// call api for news
 const displayNews = async (categoryId) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     const res = await fetch(url);
@@ -38,7 +45,6 @@ const displayNewsDatails = async (newsId) => {
     const newsDetails = document.getElementById('news-details');
     newsDetails.innerHTML = ``;
     newsId.forEach(news => {
-        console.log(news)
         const newsDiv = document.createElement('div');
         newsDiv.classList.add('card');
         newsDiv.classList.add('p-3');
@@ -56,6 +62,7 @@ const displayNewsDatails = async (newsId) => {
                     <img class="img-fluid rounded w-25 me-3" src="${news.author.img}"
                     <h5 class="pe-5 me-5">${news.author.name}</h5>
                     <span class="px-5 mx-5">${news.total_view}</span>
+                    <button onclick="loadNewsInfo('${news._id}')" class="btn btn-primary px-5" data-bs-toggle="modal" data-bs-target="#newsInfoModal">Info</button>
                 </div>
             </div>
         </div>
@@ -64,5 +71,23 @@ const displayNewsDatails = async (newsId) => {
     })
 }
 
+const loadNewsInfo = async (newsId) => {
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`
+    const res = await fetch(url);
+    const data = await res.json();
+    displayNewsInfo(data.data[0])
+}
+
+// view info using modal
+const displayNewsInfo = (info) => {
+    const modalTitle = document.getElementById('newsInfoModalLabel');
+    modalTitle.innerText = info.title;
+    const phoneDetails = document.getElementById('news-info');
+    phoneDetails.innerHTML = `
+    <p>Author Name: ${info.author.name ? info.author.name : 'Data Not Available'}</p>
+    <p>Published Date: ${info.author.published_date ? info.author.published_date : 'Data Not Available'}</p>
+    <p>Total View: ${info.total_view ? info.total_view : 'Data Not Available'}</p>
+    `
+}
 
 loadCategory();
