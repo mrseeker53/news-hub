@@ -17,26 +17,46 @@ const displayCategory = (categories) => {
         `;
         categoryContainer.appendChild(categoryLi);
     })
-
-
 }
 
 const displayNews = async (categoryId) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     const res = await fetch(url);
     const data = await res.json();
-    displayNewsDatails(data.data, categoryId)
-
+    displayNewsDatails(data.data)
 }
 
-const displayNewsDatails = async (newsId, categoryId) => {
-    console.log(newsId.length)
+const displayNewsDatails = async (newsId) => {
+    // display total news
     const totalNews = document.getElementById('total-news');
-
     totalNews.innerHTML = `
     <h5>${newsId.length ? newsId.length :
             'No'} News Found</h5>
     `;
+
+    // display news details
+    const newsDetails = document.getElementById('news-details');
+    newsDetails.innerHTML = ``;
+    newsId.forEach(news => {
+        console.log(news)
+        const newsDiv = document.createElement('div');
+        newsDiv.classList.add('card');
+        newsDiv.classList.add('p-3');
+        newsDiv.innerHTML = `
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="${news.thumbnail_url}" class="img-fluid rounded" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">${news.title}</h5>
+                    <p class="card-text">${news.details.slice(0, 500)}...</p>
+                </div>
+            </div>
+        </div>
+        `;
+        newsDetails.appendChild(newsDiv);
+    })
 }
 
 
