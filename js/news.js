@@ -71,6 +71,13 @@ const displayNewsDatails = async (newsId) => {
         </div>
         `;
         newsDetails.appendChild(newsDiv);
+        newsId.sort(function (a, b, c) {
+            if (a.total_view < b.total_view)
+                console.log(b.total_view)
+            if (a.total_view > b.total_view)
+                return 1;
+            return 0;
+        })
     })
     // stop spinner
     toggleSpinner(false);
