@@ -27,6 +27,8 @@ const displayCategory = (categories) => {
 
 // call api for news
 const displayNews = async (categoryId) => {
+    // start spinner
+    toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${categoryId}`
     const res = await fetch(url);
     const data = await res.json();
@@ -35,6 +37,7 @@ const displayNews = async (categoryId) => {
 
 const displayNewsDatails = async (newsId) => {
     // display total news
+    console.log(newsId)
     const totalNews = document.getElementById('total-news');
     totalNews.innerHTML = `
     <h5>${newsId.length ? newsId.length :
@@ -69,6 +72,8 @@ const displayNewsDatails = async (newsId) => {
         `;
         newsDetails.appendChild(newsDiv);
     })
+    // stop spinner
+    toggleSpinner(false);
 }
 
 const loadNewsInfo = async (newsId) => {
@@ -88,6 +93,17 @@ const displayNewsInfo = (info) => {
     <p>Published Date: ${info.author.published_date ? info.author.published_date : 'Data Not Available'}</p>
     <p>Total View: ${info.total_view ? info.total_view : 'Data Not Available'}</p>
     `
+}
+
+// spinner
+const toggleSpinner = isLoading => {
+    const loaderSection = document.getElementById('loader');
+    if (isLoading) {
+        loaderSection.classList.remove('d-none');
+    }
+    else {
+        loaderSection.classList.add('d-none');
+    }
 }
 
 loadCategory();
