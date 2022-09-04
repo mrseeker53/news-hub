@@ -44,6 +44,9 @@ const displayNewsDatails = async (newsId) => {
             'No'} News Found</h5>
     `;
 
+    // most viewed news display first
+    newsId.sort((a, b) => b.total_view - a.total_view);
+
     // display news details
     const newsDetails = document.getElementById('news-details');
     newsDetails.innerHTML = ``;
@@ -71,13 +74,9 @@ const displayNewsDatails = async (newsId) => {
         </div>
         `;
         newsDetails.appendChild(newsDiv);
-        newsId.sort(function (a, b, c) {
-            if (a.total_view < b.total_view)
-                console.log(b.total_view)
-            if (a.total_view > b.total_view)
-                return 1;
-            return 0;
-        })
+        // // news.sort(function(a, b){
+
+        // })
     })
     // stop spinner
     toggleSpinner(false);
