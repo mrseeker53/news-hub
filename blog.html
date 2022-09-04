@@ -11,11 +11,145 @@
 </head>
 
 <body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar navbar-expand-lg fixed-top bg-light">
+                <div class="container mx-5 px-5">
+                    <a class="navbar-brand text-primary" href="#">
+                        <h1>News Hub</h1>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto h6">
+                            <li class="nav-item">
+                                <a class="nav-link" href="index.html#home">Home</a>
+                            </li>
+                            <li class="nav-item ps-4">
+                                <a class="nav-link active" aria-current="page" href="index.html#news">News</a>
+                            </li>
+                            <li class="nav-item ps-4">
+                                <a class="nav-link" href="#blog">Blog</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div class="container border border-secondary mt-5 opacity-25">
+            <hr>
+        </div>
+    </header>
 
+    <!-- Main Section -->
+    <main>
+        <section class="container px-5 mx-5 my-5">
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            1. The difference between var, let, and const.
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>The scope of a var variable is functional scope. The scope of a let variable is
+                                block scope. The scope of a const variable is block scope.</strong> It can be updated
+                            and re-declared into the scope. It can be updated but can not be re-declared into the scope.
+                            It cannot be updated or re-declared into the scope.<br>It can be declared without
+                            initialization. It can be declared without initialization. It can not be declared without
+                            initialization.
+                            <br>It can be accessed without initialization as its default value is "undefined." It can
+                            not be accessed without initialization otherwise it will give 'referenceError'. It can not
+                            be accessed without initialization, as it can not be declared without initialization.
+                            <br>Hoisting done, with initializing as 'default' value. Hoisting is done, but not
+                            initialized (this is the reason for error when we access the let variable before
+                            declaration/initialization).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            2. The difference between arrow function and regular function.
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>Arrow functions don't have their own "this", and they don't redefine the value of
+                                "this" within the function.</strong> This behavior of arrow functions makes them really
+                            useful when using callbacks inside methods.<br>In regular JavaScript functions, arguments
+                            keywords can be used to access the passed arguments when the function is invoked. But, arrow
+                            functions do not have their own arguments and it uses the arguments from the outer
+                            function.<br>However, arrow functions can not be used as constructors. If the arrow function
+                            contains one expression, you can omit the curly braces, and then the expression will be
+                            implicitly returned.<br>
+                            Regular functions are constructible, they can be called using the new keyword. However,
+                            arrow functions can never be used as constructor functions. Hence, they can never be invoked
+                            with the new keyword
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            3. The difference between map, forEach, filter, find.
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>Function ".forEach()," is used to execute the same code on every element in an array
+                                but does not change the array and it returns undefined.</strong> Function ".map()"
+                            executes the same code on every element in an array and returns a new array with the updated
+                            elements.<br> Functions".filter()" checks every element in an array to see if it meets a
+                            certain criteria and returns a new array with the elements that return truthy for the
+                            criteria.<br> Function .find() is also a search function like the previous but they differ
+                            in one small detail — this function returns only one match in an array. If in an array is
+                            more than one result, the function will return the first that has matched.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            4. Why use template literals
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
+                        data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>Template literals (template strings) allow you to use strings or embedded
+                                expressions in the form of a string. They are enclosed in backticks ``.</strong> A
+                            multiline string: a string that can span multiple lines. String formatting: the ability to
+                            substitute part of the string for the values of variables or expressions. This feature is
+                            also called string interpolation.<br>HTML escaping: the ability to transform a string so
+                            that it is safe to include in HTML. A template tag carries the transformation on the
+                            template literal and returns the result string.<br>In this function:
+
+                            The literals parameter is an array that contains the literal strings.
+                            The substitutions parameter contains the subsequent arguments interpreted for each
+                            substitution.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer Section -->
     <footer>
-        <nav class="navbar bg-light text-secondary mt-5 pt-4 d-flex justify-content-center">
+        <nav class="navbar fixed-bottom bg-light text-secondary mt-5 pt-4 d-flex justify-content-center">
             <p>Copyright © 2023 | News Hub</p>
         </nav>
     </footer>
