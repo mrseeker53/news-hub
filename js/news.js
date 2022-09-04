@@ -37,7 +37,6 @@ const displayNews = async (categoryId) => {
 
 const displayNewsDatails = async (newsId) => {
     // display total news
-    console.log(newsId)
     const totalNews = document.getElementById('total-news');
     totalNews.innerHTML = `
     <h5>${newsId.length ? newsId.length :
@@ -74,10 +73,8 @@ const displayNewsDatails = async (newsId) => {
         </div>
         `;
         newsDetails.appendChild(newsDiv);
-        // // news.sort(function(a, b){
-
-        // })
     })
+
     // stop spinner
     toggleSpinner(false);
 }
